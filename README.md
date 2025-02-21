@@ -1,8 +1,8 @@
-🚀 Local Setup for Hadoop, Spark, and MinIO Storage for Spark Warehousing Housekeeping
+#🚀 Local Setup for Hadoop, Spark, and MinIO Storage for Spark Warehousing Housekeeping
 
-📌 Prerequisites
+##📌 Prerequisites
 
-🍺 Homebrew Installation
+###🍺 Homebrew Installation
 
 Set up Homebrew on macOS:
 
@@ -48,4 +48,5 @@ java -version
 openjdk version "1.8.0_xxx"
 
 🔥 More setup details for Hadoop, Spark, and MinIO coming soon! Let me know if you need anything specific. 🚀
+
 
