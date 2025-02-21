@@ -4,7 +4,7 @@
 
 ### 🍺 Homebrew Installation
 
-Set up Homebrew on macOS:
+``` Set up Homebrew on macOS:
 
 Install Homebrew via the Mac Self Service Portal.
 
