@@ -25,29 +25,29 @@ echo 'export PATH=/opt/homebrew/bin:$PATH' | tee -a ~/.zshrc ~/.bashrc
 source ~/.zshrc && source ~/.bashrc
 ```
 
-☕ Java Installation
+### ☕ Java Installation
 
-Install Azul Java JDK 8.70.0.23:
+1. Install Azul Java JDK 8.70.0.23:
 
-Download Azul Java JDK Version 8.70.0.23 via the Mac Self Service Portal.
+2. Download Azul Java JDK Version 8.70.0.23 via the Mac Self Service Portal.
 
-Update both ~/.zshrc and ~/.bashrc with the following command:
-
+3. Update both ~/.zshrc and ~/.bashrc with the following command:
+```
 echo 'export JAVA_HOME=$(/usr/libexec/java_home)' | tee -a ~/.zshrc ~/.bashrc
 echo 'export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home' | tee -a ~/.zshrc ~/.bashrc
-
-Apply the changes:
-
+```
+4. Apply the changes:
+```
 source ~/.zshrc && source ~/.bashrc
-
-Verify Java installation:
-
+```
+5. Verify Java installation:
+```
 java -version
-
-✅ Expected Output:
-
+```
+- Expected Output:
+```
 openjdk version "1.8.0_xxx"
+```
 
-🔥 More setup details for Hadoop, Spark, and MinIO coming soon! Let me know if you need anything specific. 🚀
 
 
