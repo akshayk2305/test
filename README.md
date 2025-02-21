@@ -119,16 +119,16 @@ export NO_PROXY="localhost,127.0.0.1,.aexp.com"
 ```
 source ~/.zshrc && source ~/.bashrc
 ```
-🔑 IIQ Request & SSH Setup
 
-📝 Raise IIQ Request
+## 🔑 IIQ Request & SSH Setup
 
-Raise an IIQ Request for your Mac with the name PRC-AXP-BA-E3-AppUser-macOS-TEMP-ADMIN from:
-👉 IIQ Request Portal
+###📝 Raise IIQ Request
 
-Wait for approval to gain IIQ Access.
+1. Raise an IIQ Request for your Mac with the name PRC-AXP-BA-E3-AppUser-macOS-TEMP-ADMIN from 👉 [IIQ Request Portal](https://iiq.aexp.com/iam/newUIPOC.jsf)
 
-Once approved, go to Self Service and enable Make Me Admin - Engineer.
+2. Wait for approval to gain IIQ Access.
+
+3. Once approved, go to Self Service and enable Make Me Admin - Engineer.
 
 🔒 SSH Installation
 
