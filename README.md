@@ -461,15 +461,18 @@ hdfs dfs -put housekeeping-configs.yml /ntr/oozie/housekeeping/clearing/
 
 ### 🚀 2️⃣ Start HDFS & YARN
 1. Export necessary proxies.
+   
 2. Start SSH and verify:
    ```bash
    sudo lsof -i :22
    ```
-   Ensure output is displayed.
+- Ensure output is displayed.
+
 3. Start HDFS and YARN:
    ```bash
    start-dfs.sh && start-yarn.sh
    ```
+
 4. Execute the HDFS script:
    ```bash
    ./hdfs_script.sh
