@@ -26,8 +26,6 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    export PATH=/opt/homebrew/bin:$PATH
    ```  
 
----
-
 ### ☕ Install Java (Azul JDK 8)  
 
 1️⃣ Download **Azul Java JDK Version 8.70.0.23** via the **Self Service Portal**.  
@@ -89,8 +87,6 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    OS name: "mac os x", version: "14.x", arch: "aarch64", family: "mac"
    ```  
 
----
-
 ### 🔹 Git Installation  
 
 1️⃣ Install **Git** using Homebrew:  
@@ -102,8 +98,6 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    ```bash
    git --version
    ```  
-
----
 
 ### 🔥 Scala Installation  
 
@@ -122,8 +116,6 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    export SCALA_HOME=/usr/local/opt/scala@2.13
    ```  
 
----
-
 ### 🌐 Proxy Configuration  
 
 1️⃣ Update your shell configuration (`.zshrc` & `.bashrc`) with the following proxy settings:  
@@ -132,8 +124,6 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    export HTTPS_PROXY="https://proxy.aexp.com:8080/"
    export NO_PROXY="localhost,127.0.0.1,.aexp.com"
    ```  
-
----
 
 ### 🛠️ IIQ Access Request  
 
