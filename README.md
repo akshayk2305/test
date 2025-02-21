@@ -12,7 +12,7 @@
 ```
 command -v brew
 ```
-✅ Expected Output:
+  ✅ Expected Output:
 ```
 /opt/homebrew/bin/brew
 ```
