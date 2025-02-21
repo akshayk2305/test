@@ -122,46 +122,184 @@ source ~/.zshrc && source ~/.bashrc
 
 ## 🔑 IIQ Request & SSH Setup
 
-###📝 Raise IIQ Request
+### 📝 Raise IIQ Request
 
-1. Raise an IIQ Request for your Mac with the name PRC-AXP-BA-E3-AppUser-macOS-TEMP-ADMIN from 👉 [IIQ Request Portal](https://iiq.aexp.com/iam/newUIPOC.jsf)
+1. Raise an IIQ Request for your Mac with the name PRC-AXP-BA-E3-AppUser-macOS-TEMP-ADMIN from 👉 [IIQ Request Portal](https://iiq.aexp.com/iam/newUIPOC.jsf).
 
 2. Wait for approval to gain IIQ Access.
 
 3. Once approved, go to Self Service and enable Make Me Admin - Engineer.
 
-🔒 SSH Installation
+### 🔒 SSH Installation
 
-Enable Make Me Admin in Self Service.
+1. Enable Make Me Admin in Self Service.
 
-Set up proxy variables in your terminal:
-
+2. Set up proxy variables in your terminal:
+```
 export HTTP_PROXY="http://proxy.aexp.com:8080/"
 export HTTPS_PROXY="https://proxy.aexp.com:8080/"
-
-Install OpenSSH using Homebrew:
-
+```
+3. Install OpenSSH using Homebrew:
+```
 brew install openssh
-
-Verify SSH installation:
-
+```
+4. Verify SSH installation:
+```
 ssh -V
-
-✅ Expected Output:
-
+```
+- Expected Output:
+```
 OpenSSH_9.9p1, OpenSSL 3.4.0 22 Oct 2024
+```
 
-🔑 Setup SSH Key
+### 🔑 Setup SSH Key
 
-Generate an SSH key:
-
+1. Generate an SSH key:
+```
 ssh-keygen -t rsa -P ""
+```
+2. Press Enter to accept the default location and set a passphrase (optional but recommended).
 
-Press Enter to accept the default location and set a passphrase (optional but recommended).
-
-Add your SSH key to authorized_keys:
-
+3. Add your SSH key to authorized_keys:
+```
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+```
 
-🔥 More setup details for Hadoop, Spark, and MinIO coming soon! Let me know if you need anything specific. 🚀
+### 🔒 SSH enable
+
+1. On terminal:
+```
+sudo systemsetup -setremotelogin on
+```
+- If the user is not in the sudoers file, click on Make Me Admin in Self Service.
+  
+2. Verify remote login status:
+```
+sudo systemsetup -getremotelogin
+```
+- Expected output:
+```
+Remote Login: On
+```
+3. Verify SSH access to localhost (Admin access required):
+```
+ssh localhost
+```
+### 🔍 Troubleshooting SSH
+
+1. Check if SSH is listening:
+```
+sudo lsof -i :22
+```
+2. If no output appears, SSH may not be listening. Restart SSH:
+```
+sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+```
+3. Restart SSH manually:
+```
+sudo launchctl stop com.openssh.sshd
+sudo launchctl start com.openssh.sshd
+```
+4. If SSH is still not working, install OpenSSL and retry:
+```
+brew install openssl
+```
+- Ensure SSH version is brew by running :
+```
+which ssh
+```
+
+## Hadoop Installation Setup 
+
+### 🛠️ Install Hadoop 
+```bash
+brew install hadoop
+```
+
+### 📝 Update Configuration Files 
+Add these lines to your `.zshrc` and `.bashrc` file:
+```bash
+export HADOOP_HOME=/<enter your path>/ntr-recon-e0/hadoop
+export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:/<enter your path>/ntr-recon-e0/hadoop/share/hadoop/tools/lib/*
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+```
+
+### Clone Repository 🌍
+```bash
+git clone https://github.aexp.com/banan7/ntr-recon-e0
+```
+
+### Configure Hadoop ⚙️
+Open the repo and edit the `ntr-e0/hadoop/etc/hadoop/hdfs-site.xml` file. Ensure the following properties match your `ntr-e0` directory:
+```xml
+<property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:///<enter your path of ntr-recon-e0>/ntr-recon-e0/vol/hadoop_data/datanode</value>
+</property>
+<property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:///<enter your path of ntr-recon-e0>/ntr-e0/vol/hadoop_data/namenode</value>
+</property>
+```
+Ensure `<value>(path)</value>` matches correctly.
+
+## Start HDFS and YARN 🚀
+
+### Format HDFS Before First Use 📌
+```bash
+hdfs namenode -format -force
+```
+
+### Start Hadoop Services ✅
+```bash
+start-dfs.sh && start-yarn.sh
+```
+
+### Verify Running Services 🧐
+```bash
+jps
+```
+**Expected Output:**
+```
+22343 ResourceManager
+22135 SecondaryNameNode
+21879 NameNode
+21992 DataNode
+15499 Main
+```
+
+**If `namenode` or `datanode` are missing:**
+```bash
+hdfs namenode -format  # If needed
+hdfs datanode -format  # If needed
+```
+
+**If NameNode is stuck in SafeMode:**
+```bash
+hdfs dfsadmin -safemode leave
+```
+Then, go to Self-Service and select **Make Me Admin**.
+
+## Verify Hadoop Cluster ✅
+- **HDFS NameNode UI:** [http://localhost:9870](http://localhost:9870)
+- **YARN ResourceManager UI:** [http://localhost:8088/cluster](http://localhost:8088/cluster)
+
+## Test HDFS Functionality 📂
+```bash
+# Create a directory
+hdfs dfs -mkdir /ntr
+
+# Put a local file into HDFS
+hdfs dfs -put ./nbachamps.txt /
+
+# List files in HDFS
+hdfs dfs -ls /
+```
+
+## Stop Hadoop Services 🛑
+```bash
+stop-dfs.sh && stop-yarn.sh
+```
 
