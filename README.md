@@ -25,6 +25,7 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    ```bash
    export PATH=/opt/homebrew/bin:$PATH
    ```  
+---
 
 ### ☕ Install Java (Azul JDK 8)  
 
@@ -60,6 +61,8 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    openjdk version "1.8.0_xxx"
    ```  
 
+---
+
 ### ⚡ Maven Installation  
 
 1️⃣ Install **Maven** using Homebrew:  
@@ -87,6 +90,8 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    OS name: "mac os x", version: "14.x", arch: "aarch64", family: "mac"
    ```  
 
+---
+
 ### 🔹 Git Installation  
 
 1️⃣ Install **Git** using Homebrew:  
@@ -98,6 +103,8 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    ```bash
    git --version
    ```  
+
+---
 
 ### 🔥 Scala Installation  
 
@@ -116,6 +123,8 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
    export SCALA_HOME=/usr/local/opt/scala@2.13
    ```  
 
+---
+
 ### 🌐 Proxy Configuration  
 
 1️⃣ Update your shell configuration (`.zshrc` & `.bashrc`) with the following proxy settings:  
@@ -128,16 +137,15 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
 ### 🛠️ IIQ Access Request  
 
 1️⃣ Raise an **IIQ Request** for your Mac with the name:  
-   **PRC-AXP-BA-E3-AppUser-macOS-TEMP-ADMIN**  
-   ➡️ [IIQ Request Portal](https://iiq.aexp.com/iam/newUIPOC.jsf)  
-
+   **PRC-AXP-BA-E3-AppUser-macOS-TEMP-ADMIN**  ➡️ [IIQ Request Portal](https://iiq.aexp.com/iam/newUIPOC.jsf)  
 2️⃣ Once approved, you will receive **IIQ Access**.  
-3️⃣ Navigate to **Self Service** and enable:  
-   **Make Me Admin - Engineer**  
+3️⃣ Navigate to **Self Service** and enable: **Make Me Admin - Engineer**  
 
 ---
 
-## 🔐 SSH Installation  
+## 🔐 SSH Setup
+
+### 🚀 SSH Installation  
 
 1️⃣ Enable **Make Me Admin** on Self Service.  
 
@@ -175,7 +183,7 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
 
 ---
 
-## 🚀 Enabling SSH  
+### 🚀 Enabling SSH  
 
 1️⃣ Enable **Remote Login**:  
    ```bash
@@ -201,7 +209,7 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
 
 ---
 
-## 🛠️ Troubleshooting SSH Issues  
+### 🛠️ Troubleshooting SSH Issues  
 
 1️⃣ Check if SSH is listening on port 22:  
    ```bash
@@ -257,7 +265,7 @@ This guide provides step-by-step instructions to set up **Hadoop, Spark, and Min
 
 2️⃣ Open the repo and edit the Hadoop configuration file:  
    **File Path:** `ntr-e0/hadoop/etc/hadoop/hdfs-site.xml`  
-   Ensure the paths match your **ntr-e0** directory:
+   Ensure the paths match your correct directory:
 
    ```xml
    <property>
@@ -415,7 +423,10 @@ To stop **HDFS** and **YARN**:
    docker start minio
    ```
 
+---
+
 ## 📌 HDFS Script (`hdfs_script.sh`)
+
 This script automates the creation of necessary HDFS directories and dummy files for processing.
 
 ### 🔹 Functionality:
@@ -430,9 +441,10 @@ This script automates the creation of necessary HDFS directories and dummy files
 
 ---
 
-## ⚙️ Configuration Steps
+## ⚙️ Application Running Steps
 
 ### 📝 1️⃣ Update `housekeeping-configs.yml` (for S3 settings)
+
 Modify the following parameters:
 ```yaml
 s3_host: <your_s3_host>
@@ -444,6 +456,8 @@ If you change this file, upload it to HDFS:
 ```bash
 hdfs dfs -put housekeeping-configs.yml /ntr/oozie/housekeeping/clearing/
 ```
+
+---
 
 ### 🚀 2️⃣ Start HDFS & YARN
 1. Export necessary proxies.
@@ -461,6 +475,8 @@ hdfs dfs -put housekeeping-configs.yml /ntr/oozie/housekeeping/clearing/
    ./hdfs_script.sh
    ```
 
+---
+
 ### 🔥 3️⃣ Run Spark Job
 Submit the Spark job using the following command:
 ```bash
@@ -470,3 +486,4 @@ spark-submit --master local --name test-job \
 /Users/akhan396/Cloned_Repo/payment-network_filesummaryaudit_bnc/spark-housekeeping/target/spark-housekeeping-1.0.jar
 ```
 
+---
