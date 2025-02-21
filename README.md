@@ -4,25 +4,26 @@
 
 ### 🍺 Homebrew Installation
 
-``` Set up Homebrew on macOS:
+1. Set up Homebrew on macOS:
 
-Install Homebrew via the Mac Self Service Portal.
+2. Install Homebrew via the Mac Self Service Portal.
 
-Verify the installation in the terminal:
-
+3. Verify the installation in the terminal:
+```
 command -v brew
-
+```
 ✅ Expected Output:
-
+```
 /opt/homebrew/bin/brew
-
-Add Homebrew to your system path by updating both ~/.zshrc and ~/.bashrc:
-
+```
+4. Add Homebrew to your system path by updating both ~/.zshrc and ~/.bashrc:
+```
 echo 'export PATH=/opt/homebrew/bin:$PATH' | tee -a ~/.zshrc ~/.bashrc
-
-Apply the changes:
-
+```
+5. Apply the changes:
+```
 source ~/.zshrc && source ~/.bashrc
+```
 
 ☕ Java Installation
 
